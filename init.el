@@ -14,7 +14,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(protobuf-mode docker docker-compose-mode yahoo-weather 2048-game go-guru company-go smartparens rainbow-delimiters yaml-mode markdown-mode hl-todo magit avy dired-sidebar dired-narrow dired-collapse which-key crux ag smex company delight counsel)))
+	(rust-mode protobuf-mode docker docker-compose-mode yahoo-weather 2048-game go-guru company-go smartparens rainbow-delimiters yaml-mode markdown-mode hl-todo magit avy dired-sidebar dired-narrow dired-collapse which-key crux ag smex company delight counsel)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
@@ -69,6 +69,10 @@
 (define-key global-map (kbd "C-c r") 'vr/replace)
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
+
+(add-hook 'protobuf-mode-hook (lambda ()
+						   (company-mode)
+						   (smartparens-mode)))
 
 (add-hook 'go-mode-hook (lambda ()
 						  (company-mode)
