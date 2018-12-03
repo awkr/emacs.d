@@ -14,7 +14,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-	(rust-mode protobuf-mode docker docker-compose-mode yahoo-weather 2048-game go-guru company-go smartparens rainbow-delimiters yaml-mode markdown-mode hl-todo magit avy dired-sidebar dired-narrow dired-collapse which-key crux ag smex company delight counsel)))
+	(go-direx go-eldoc rust-mode protobuf-mode docker docker-compose-mode yahoo-weather 2048-game go-guru company-go smartparens rainbow-delimiters yaml-mode markdown-mode hl-todo magit avy dired-sidebar dired-narrow dired-collapse which-key crux ag smex company delight counsel)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(tooltip-mode nil))
@@ -76,6 +76,11 @@
 
 (add-hook 'go-mode-hook (lambda ()
 						  (company-mode)
+						  (go-eldoc-setup)
+						  (local-set-key (kbd "M-." 'godef-jump)
+						  (local-set-key (kbd "C-c d") 'godoc)
+						  (local-set-key (kbd "C-c i") 'go-goto-imports)
+						  (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)
 						  (set (make-local-variable 'company-backends) '(company-go))
                           (add-hook 'before-save-hook 'gofmt-before-save nil t)))
 
